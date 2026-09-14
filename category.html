@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เลือกตามหมวดหมู่ — Game Discovery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .cat-wrap{max-width:1180px;margin:0 auto;padding:48px 32px;}
+  .back-link{font-size:14px;color:var(--green-soft);display:inline-block;margin-bottom:20px;}
+  .cat-wrap h1{font-size:28px;font-weight:600;margin-bottom:8px;}
+  .cat-count{font-size:14px;color:var(--text-low);margin-bottom:32px;}
+  .cat-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;}
+  .cat-results .review-card{margin:0;padding:0;border:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="index.html"><span class="brand-mark">▸</span>Game Discovery</a>
+    <div class="nav-links">
+      <a href="index.html">หน้าแรก</a>
+      <a href="categories.html">หมวดหมู่</a>
+      <a href="search.html">ค้นหา</a>
+      <a href="#">รีวิว</a>
+      <a href="#">บทความ</a>
+      <a href="#">ข่าวสาร</a>
+    </div>
+    <div class="nav-right">
+      <form class="search-box" id="nav-search-form" role="search">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="nav-search-input" class="search-input" placeholder="ค้นหาเกม, แนวเกม..." autocomplete="off">
+      </form>
+    </div>
+  </nav>
+</header>
+
+<div class="cat-wrap">
+  <a class="back-link" href="index.html">← กลับหน้าแรก</a>
+  <h1 id="cat-title">หมวดหมู่</h1>
+  <p class="cat-count" id="cat-count"></p>
+  <div class="cat-results" id="cat-results"></div>
+</div>
+
+<script src="common.js"></script>
+<script src="category.js"></script>
+</body>
+</html>

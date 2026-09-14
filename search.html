@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ค้นหาเกม — Game Discovery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="index.html"><span class="brand-mark">▸</span>Game Discovery</a>
+    <div class="nav-links">
+      <a href="index.html">หน้าแรก</a>
+      <a href="categories.html">หมวดหมู่</a>
+      <a href="search.html" class="active">ค้นหา</a>
+      <a href="#">รีวิว</a>
+      <a href="#">บทความ</a>
+      <a href="#">ข่าวสาร</a>
+    </div>
+    <div class="nav-right">
+      <form class="search-box" id="nav-search-form" role="search">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="nav-search-input" class="search-input" placeholder="ค้นหาเกม, แนวเกม..." autocomplete="off">
+      </form>
+    </div>
+  </nav>
+</header>
+
+<div class="search-wrap">
+  <h1>ค้นหาเกม</h1>
+  <p class="lead">พิมพ์ชื่อเกม แนวเกม หรือคำในคำอธิบาย แล้วกรอง/จัดเรียงผลลัพธ์ได้ตามต้องการ — ผลลัพธ์จะอัปเดตทันทีขณะพิมพ์</p>
+
+  <div class="search-controls">
+    <div class="search-field">
+      <input type="text" id="search-input" placeholder="เช่น Zelda, สยองขวัญ, โลกเปิด..." autocomplete="off">
+    </div>
+    <div class="filter-row">
+      <select id="category-filter" aria-label="กรองตามหมวดหมู่">
+        <option value="">ทุกหมวดหมู่</option>
+      </select>
+      <select id="sort-filter" aria-label="เรียงลำดับ">
+        <option value="score_desc">คะแนนสูง → ต่ำ</option>
+        <option value="score_asc">คะแนนต่ำ → สูง</option>
+        <option value="title_asc">ชื่อ A → Z</option>
+        <option value="title_desc">ชื่อ Z → A</option>
+      </select>
+      <label class="check-field">
+        <input type="checkbox" id="editors-pick-filter">
+        เฉพาะตัวเลือกของบรรณาธิการ
+      </label>
+    </div>
+  </div>
+
+  <p class="search-count" id="search-count"></p>
+  <div class="search-results" id="search-results"></div>
+</div>
+
+<footer>Game Discovery — เว็บไซต์รีวิวและแนะนำเกม, mockup ธีมเขียว-ดำ</footer>
+
+<script src="common.js"></script>
+<script src="search.js"></script>
+</body>
+</html>

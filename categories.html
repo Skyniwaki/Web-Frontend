@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>หมวดหมู่ทั้งหมด — Game Discovery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .cats-wrap{max-width:1180px;margin:0 auto;padding:48px 32px;}
+  .cats-wrap h1{font-size:28px;font-weight:600;margin-bottom:8px;}
+  .cats-wrap p.lead{color:var(--text-mid);font-size:15px;margin-bottom:36px;}
+  .cats-full-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+  .cats-full-grid .cat-tile{padding:24px;}
+  .cats-full-grid .cat-tile b{font-size:18px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="index.html"><span class="brand-mark">▸</span>Game Discovery</a>
+    <div class="nav-links">
+      <a href="index.html">หน้าแรก</a>
+      <a href="categories.html" class="active">หมวดหมู่</a>
+      <a href="search.html">ค้นหา</a>
+      <a href="#">รีวิว</a>
+      <a href="#">บทความ</a>
+      <a href="#">ข่าวสาร</a>
+    </div>
+    <div class="nav-right">
+      <form class="search-box" id="nav-search-form" role="search">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="nav-search-input" class="search-input" placeholder="ค้นหาเกม, แนวเกม..." autocomplete="off">
+      </form>
+    </div>
+  </nav>
+</header>
+
+<div class="cats-wrap">
+  <h1>หมวดหมู่ทั้งหมด</h1>
+  <p class="lead">เลือกแนวเกมที่คุณสนใจ เพื่อดูรีวิวเฉพาะหมวดหมู่นั้น (จำนวนเกมนับจากฐานข้อมูลจริง)</p>
+  <div class="cats-full-grid" id="cats-full-grid">
+    <p style="color:var(--text-mid);font-size:14px;">กำลังโหลดหมวดหมู่...</p>
+  </div>
+</div>
+
+<footer>Game Discovery — เว็บไซต์รีวิวและแนะนำเกม, mockup ธีมเขียว-ดำ</footer>
+
+<script src="common.js"></script>
+<script src="categories.js"></script>
+</body>
+</html>
