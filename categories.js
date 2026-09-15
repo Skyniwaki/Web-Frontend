@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = 'https://web-backend-silk.vercel.app/api';
 
 async function loadCategories() {
   const container = document.getElementById('cats-full-grid');
