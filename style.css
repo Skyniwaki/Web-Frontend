@@ -210,21 +210,23 @@
   .search-results .review-card{margin:0;padding:0;border:none;}
   .search-state{color:var(--text-mid);font-size:14px;}
 
-  .detail-cover {
-    position: relative;      
-    height: auto;            
-    padding: 30px;
-    order-radius: 16px;
-    background: #16211d;     
-    overflow: hidden;
+    .detail-cover {
+    position: relative;
+    height: auto;
+    min-height: 0;
+    padding: 30px;          
     box-sizing: border-box;
+    border-radius: 16px;
+    background: #16211d;
+    overflow: hidden;
+    display: block;        
   }
-
 
   .detail-image {
     display: block;
     width: 100%;
     height: auto;
+    object-fit: contain;
     border-radius: 8px;
   }
 
