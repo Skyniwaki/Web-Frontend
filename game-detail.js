@@ -58,7 +58,7 @@ function renderDetail(wrap, game) {
       ← กลับหน้าแรก
     </a>
 
-    <div class="detail-cover">
+    <div class="cover-box">
 
       ${
         imageUrl
@@ -66,7 +66,7 @@ function renderDetail(wrap, game) {
             <img
               src="${imageUrl}"
               alt="${game.title}"
-              class="detail-image"
+              class="cover-img"
             >
           `
           : `
