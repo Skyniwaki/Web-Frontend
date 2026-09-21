@@ -229,7 +229,7 @@
   }
 
   .detail-cover-placeholder {
-    width: auto;
+    width: 100%;
     height: auto;
     display: flex;
     align-items: flex-end;
