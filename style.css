@@ -232,7 +232,7 @@
 
   .detail-cover-placeholder {
     width: auto;
-    min-height: 240px;
+    height: auto;
     display: flex;
     align-items: flex-end;
     padding: 24px;
