@@ -205,37 +205,8 @@
     color:var(--text-mid);cursor:pointer;user-select:none;
   }
   .check-field input{accent-color:var(--green);width:16px;height:16px;cursor:pointer;}
+
   .search-count{font-size:14px;color:var(--text-low);margin-bottom:20px;}
   .search-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;}
   .search-results .review-card{margin:0;padding:0;border:none;}
   .search-state{color:var(--text-mid);font-size:14px;}
-
-  .cover-box {
-    width: 100%;
-    padding: 30px;
-    box-sizing: border-box;
-    border-radius: 16px;
-    background: #16211d;
-  }
-
-  .cover-img {
-    display: block;
-    width: 100%;
-    height: auto;   /* auto scale ตามความกว้างกรอบ */
-    border-radius: 8px;
-  }
-
-  .detail-cover-placeholder {
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: flex-end;
-    padding: 24px;
-
-    font-family: 'Chakra Petch', sans-serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--text-hi);
-
-    box-sizing: border-box;
-  }
