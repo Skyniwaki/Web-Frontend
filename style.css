@@ -212,7 +212,7 @@
 
   .detail-cover {
     display: block;
-    width: 100%;
+    width: 300%;
     height: auto;
     padding: 30px;
     box-sizing: border-box;
@@ -223,7 +223,7 @@
 
   .detail-image {
     display: block;
-    width: 100%;
+    width: 300%;
     height: auto;   /* สูงตามสัดส่วนรูป ไม่โดนตัด */
     border-radius: 8px;
   }
