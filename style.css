@@ -210,21 +210,18 @@
   .search-results .review-card{margin:0;padding:0;border:none;}
   .search-state{color:var(--text-mid);font-size:14px;}
 
-  .detail-cover {
-    display: block;
+  .cover-box {
     width: 100%;
-    height: 500%;
     padding: 30px;
     box-sizing: border-box;
     border-radius: 16px;
     background: #16211d;
-    overflow: hidden;
   }
 
-  .detail-image {
+  .cover-img {
     display: block;
     width: 100%;
-    height: auto;   /* สูงตามสัดส่วนรูป ไม่โดนตัด */
+    height: auto;   /* auto scale ตามความกว้างกรอบ */
     border-radius: 8px;
   }
 
