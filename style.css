@@ -205,8 +205,38 @@
     color:var(--text-mid);cursor:pointer;user-select:none;
   }
   .check-field input{accent-color:var(--green);width:16px;height:16px;cursor:pointer;}
-
   .search-count{font-size:14px;color:var(--text-low);margin-bottom:20px;}
   .search-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;}
   .search-results .review-card{margin:0;padding:0;border:none;}
   .search-state{color:var(--text-mid);font-size:14px;}
+
+  .detail-cover {
+    height: 280px;
+    border-radius: 10px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+    background: #18221d;
+  }
+
+  .detail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .detail-cover-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-hi);
+
+    box-sizing: border-box;
+  }
