@@ -211,24 +211,20 @@
   .search-state{color:var(--text-mid);font-size:14px;}
 
   .detail-cover {
-    height: 280px;
-    border-radius: 10px;
-    margin-bottom: 28px;
-    position: relative;
-    overflow: hidden;
-    background: #18221d;
+    padding: 30px;
+    border-radius: 16px;
   }
 
   .detail-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     display: block;
   }
 
   .detail-cover-placeholder {
     width: 100%;
-    height: 100%;
+    min-height: 240px;
     display: flex;
     align-items: flex-end;
     padding: 24px;
