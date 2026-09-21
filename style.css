@@ -211,16 +211,21 @@
   .search-state{color:var(--text-mid);font-size:14px;}
 
   .detail-cover {
+    position: relative;      
+    height: auto;            
     padding: 30px;
-    border-radius: 16px;
+    order-radius: 16px;
+    background: #16211d;     
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
+
   .detail-image {
+    display: block;
     width: 100%;
     height: auto;
-    max-height: 500px;
-    object-fit: contain;
-    display: block;
+    border-radius: 8px;
   }
 
   .detail-cover-placeholder {
