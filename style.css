@@ -231,7 +231,7 @@
   }
 
   .detail-cover-placeholder {
-    width: 100%;
+    width: auto;
     min-height: 240px;
     display: flex;
     align-items: flex-end;
