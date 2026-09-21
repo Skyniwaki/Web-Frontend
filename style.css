@@ -224,7 +224,7 @@
   .detail-image {
     display: block;
     width: 100%;
-    height: auto;   /* สูงตามสัดส่วนรูป ไม่โดนตัด */
+    height: 500%;   /* สูงตามสัดส่วนรูป ไม่โดนตัด */
     border-radius: 8px;
   }
 
