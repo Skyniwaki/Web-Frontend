@@ -218,6 +218,7 @@
   .detail-image {
     width: 100%;
     height: auto;
+    max-height: 500px;
     object-fit: contain;
     display: block;
   }
