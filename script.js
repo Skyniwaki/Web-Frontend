@@ -18,6 +18,7 @@ async function loadReviewStrip() {
       return;
     }
     games.forEach((game) => container.appendChild(makeGameCard(game)));
+    staggerReveal(container.children);
   } catch (err) {
     renderState(container, 'โหลดรายการเกมไม่สำเร็จ', true);
     console.error(err);
@@ -43,6 +44,7 @@ async function loadCategoryTiles() {
       a.innerHTML = `<b>${c.category}</b><span>${c.count} เกม</span>`;
       container.appendChild(a);
     });
+    staggerReveal(container.children);
   } catch (err) {
     renderState(container, 'โหลดหมวดหมู่ไม่สำเร็จ', true);
     console.error(err);
@@ -61,6 +63,7 @@ async function loadTopRated() {
       return;
     }
     games.forEach((game) => container.appendChild(makeGameCard(game)));
+    staggerReveal(container.children);
   } catch (err) {
     renderState(container, 'โหลดเกมคะแนนสูงสุดไม่สำเร็จ', true);
     console.error(err);
@@ -97,6 +100,7 @@ async function loadRecentlyAdded() {
       `;
       container.appendChild(item);
     });
+    staggerReveal(container.children);
   } catch (err) {
     renderState(container, 'โหลดเกมล่าสุดไม่สำเร็จ', true);
     console.error(err);

@@ -18,11 +18,58 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const query = input.value.trim();
-      window.location.href = query
-        ? `search.html?q=${encodeURIComponent(query)}`
-        : 'search.html';
+      navigate(query ? `search.html?q=${encodeURIComponent(query)}` : 'search.html');
     });
   }
+
+  // ---- แอนิเมชันตอนเปลี่ยนหน้า ----
+  // เข้าหน้า: เพิ่มคลาสให้ CSS เล่น animation
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced) {
+    document.body.classList.add('page-enter');
+  }
+
+  // ออกจากหน้า: fade ออกก่อน แล้วค่อยเปลี่ยนเส้นทาง
+  function navigate(url) {
+    if (prefersReduced) {
+      window.location.href = url;
+      return;
+    }
+
+    document.body.classList.add('is-leaving');
+    window.setTimeout(() => {
+      window.location.href = url;
+    }, 190);
+  }
+
+  // จับการคลิกลิงก์ภายในเว็บไซต์ เพื่อเล่น animation ก่อนออกจากหน้า
+  // ข้ามลิงก์ที่เปิดแท็บใหม่, ดาวน์โหลด, ลิงก์ภายนอก, หรือคลิกพร้อม modifier key
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+
+    const link = e.target instanceof Element ? e.target.closest('a[href]') : null;
+    if (!link) return;
+    if (link.target === '_blank' || link.hasAttribute('download')) return;
+
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+
+    // ลิงก์ภายนอก — ปล่อยให้เบราว์เซอร์จัดการ
+    if (/^https?:\/\//i.test(href) && link.origin !== window.location.origin) return;
+
+    // ลิงก์ไฟล์อื่นในโฟลเดอร์เดียวกัน ให้ผ่าน animation
+    e.preventDefault();
+    navigate(link.href);
+  });
+
+  // เมื่อย้อนกลับมาด้วยปุ่ม Back/Forward ต้องเอาคลาสออกด้วย
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      document.body.classList.remove('is-leaving');
+    }
+  });
 
   // ---- เมนู hamburger (จอเล็ก) ----
   const toggle = document.getElementById('nav-toggle');

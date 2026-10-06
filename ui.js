@@ -7,6 +7,15 @@ function coverColorFor(id) {
   return coverColors[(id - 1) % coverColors.length];
 }
 
+// กรองหมวดหมู่แบบตรงตัวอีกครั้งฝั่ง client
+// backend เคยใช้ ilike('%category%') ทำให้ 'Action' ไปตรงกับ 'Action RPG' ด้วย
+// ถึงแก้ backend แล้ว การกรองซ้ำตรงนี้ทำให้จำนวนผลลัพธ์ตรงกับ
+// ตัวเลขใน /api/categories เสมอ แม้ backend ยังเป็นเวอร์ชันเก่า
+function exactCategory(games, category) {
+  if (!category) return games;
+  return games.filter((g) => (g.category || '').trim() === category.trim());
+}
+
 // การ์ดเกม: ปก 16:10 + คะแนนบนปก + ชื่อ + หมวดหมู่
 function makeGameCard(game) {
   const a = document.createElement('a');
@@ -44,6 +53,25 @@ function renderState(container, message, isError) {
   el.textContent = message;
   container.innerHTML = '';
   container.appendChild(el);
+}
+
+// ใส่คลาส .reveal + ลำดับ (--i) ให้การ์ดไล่ทีละใบตอนโหลดเสร็จ
+function staggerReveal(nodes) {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+
+  Array.from(nodes).forEach((node, index) => {
+    node.classList.add('reveal');
+    node.style.setProperty('--i', index);
+
+    // ถอดคลาสทิ้งเมื่อเล่นจบ ไม่งั้น animation จะค้างทับ hover:transform ของการ์ด
+    node.addEventListener('animationend', function onEnd(e) {
+      if (e.animationName !== 'stagger-in') return;
+      node.classList.remove('reveal');
+      node.style.removeProperty('--i');
+      node.removeEventListener('animationend', onEnd);
+    });
+  });
 }
 
 // skeleton แบบเบา ๆ ใช้ระหว่างรอข้อมูลจาก API

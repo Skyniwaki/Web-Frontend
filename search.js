@@ -66,7 +66,8 @@ async function runSearch() {
     const res = await fetch(`${API_BASE}/games?${qs}`);
     if (!res.ok) throw new Error('ค้นหาไม่สำเร็จ');
 
-    const games = await res.json();
+    // กรองหมวดหมู่ซ้ำฝั่ง client ให้ตรงกับจำนวนใน /api/categories
+    const games = exactCategory(await res.json(), categoryFilter.value);
     renderResults(games);
   } catch (err) {
     countEl.textContent = '';
@@ -85,6 +86,7 @@ function renderResults(games) {
   countEl.textContent = `พบ ${games.length} เกม`;
   resultsEl.innerHTML = '';
   games.forEach((game) => resultsEl.appendChild(makeGameCard(game)));
+  staggerReveal(resultsEl.children);
 }
 
 function debouncedSearch() {

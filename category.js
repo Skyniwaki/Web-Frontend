@@ -26,7 +26,7 @@ async function loadCategory() {
     const res = await fetch(`${API_URL}?category=${encodeURIComponent(category)}`);
     if (!res.ok) throw new Error('โหลดข้อมูลไม่สำเร็จ');
 
-    const games = await res.json();
+    const games = exactCategory(await res.json(), category);
     renderResults(resultsEl, countEl, games);
   } catch (err) {
     countEl.textContent = '';
@@ -45,6 +45,7 @@ function renderResults(resultsEl, countEl, games) {
   }
 
   games.forEach((game) => resultsEl.appendChild(makeGameCard(game)));
+  staggerReveal(resultsEl.children);
 }
 
 loadCategory();

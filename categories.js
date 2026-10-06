@@ -23,6 +23,7 @@ async function loadCategories() {
       a.innerHTML = `<b>${c.category}</b><span>${c.count} เกม</span>`;
       container.appendChild(a);
     });
+    staggerReveal(container.children);
   } catch (err) {
     renderState(container, 'โหลดหมวดหมู่ไม่สำเร็จ — ลองรีเฟรชหน้านี้อีกครั้ง', true);
     console.error(err);

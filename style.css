@@ -175,6 +175,70 @@ button,input,select{font:inherit;color:inherit;}
 .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
 
 /* =========================================================
+   PAGE TRANSITION
+   ========================================================= */
+/* เข้าหน้า: เนื้อหาเลื่อนขึ้นพร้อม fade */
+@keyframes page-in{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes page-out{
+  from{opacity:1;transform:translateY(0);}
+  to{opacity:0;transform:translateY(-8px);}
+}
+
+@keyframes stagger-in{
+  from{opacity:0;transform:translateY(14px) scale(.985);}
+  to{opacity:1;transform:translateY(0) scale(1);}
+}
+
+/* ใช้ fill-mode backwards เพื่อให้หลังเล่นจบ element กลับเป็นสถานะปกติ
+   ไม่ให้ transform จาก animation ค้างอยู่แล้วไปกิด sticky ภายในหน้า */
+.page-enter .hero-inner,
+.page-enter .page-head{
+  animation:page-in .5s var(--ease) backwards;
+}
+
+.page-enter .section{
+  animation:page-in .5s var(--ease) backwards;
+  animation-delay:.05s;
+}
+
+/* การ์ดที่โหลดมาจาก API — ไล่ทีละใบ */
+.reveal{
+  animation:stagger-in .42s var(--ease) both;
+  animation-delay:calc(var(--i,0) * 55ms);
+}
+
+/* ออกจากหน้าก่อนเปลี่ยนเส้นทาง */
+body.is-leaving main,
+body.is-leaving .hero,
+body.is-leaving .container,
+body.is-leaving .detail-wrap,
+body.is-leaving .page-wrap{
+  animation:page-out .2s var(--ease) both;
+  pointer-events:none;
+}
+body.is-leaving{animation:none !important;}
+
+@media (prefers-reduced-motion:reduce){
+  .page-enter .hero-inner,
+  .page-enter .page-head,
+  .page-enter .section,
+  .reveal{
+    animation:none !important;
+  }
+  body.is-leaving main,
+  body.is-leaving .hero,
+  body.is-leaving .container,
+  body.is-leaving .detail-wrap,
+  body.is-leaving .page-wrap{
+    animation:none !important;
+  }
+}
+
+/* =========================================================
    BUTTONS
    ========================================================= */
 .btn-primary,.btn-ghost{
