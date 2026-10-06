@@ -11,84 +11,98 @@
 </head>
 <body>
 
-<header>
+<header class="site-header">
   <nav class="nav">
     <a class="brand" href="index.html"><span class="brand-mark">▸</span>Game Discovery</a>
-    <div class="nav-links">
+    <div class="nav-links" id="nav-links">
       <a href="index.html" class="active">หน้าแรก</a>
       <a href="categories.html">หมวดหมู่</a>
       <a href="search.html">ค้นหา</a>
-      <a href="#">รีวิว</a>
-      <a href="#">บทความ</a>
-      <a href="#">ข่าวสาร</a>
     </div>
     <div class="nav-right">
       <form class="search-box" id="nav-search-form" role="search">
         <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         <input type="text" id="nav-search-input" class="search-input" placeholder="ค้นหาเกม, แนวเกม..." autocomplete="off">
       </form>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="เปิดเมนู" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 </header>
 
 <div class="hero">
-  <div class="hero-left">
-    <div class="hero-tag"><span class="dot"></span>คัดสรรทุกวันโดยทีมงาน</div>
-    <h1>เจอเกมที่ใช่ ก่อนเสียเวลาเล่นเกมที่ไม่ใช่</h1>
-    <p>รวมรีวิวเกมคุณภาพจากทุกแพลตฟอร์ม จัดหมวดหมู่ตามแนวที่คุณชอบ พร้อมค้นหาและกรองเกมที่ตรงใจได้ทันที</p>
-    <div class="hero-ctas">
-      <a href="search.html" class="btn-primary">เริ่มค้นหาเกม</a>
-      <a href="categories.html" class="btn-ghost">ดูหมวดหมู่ทั้งหมด</a>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag"><span class="dot"></span>คัดสรรทุกวันโดยทีมงาน</div>
+      <h1>เจอเกมที่ใช่ ก่อนเสียเวลาเล่นเกมที่<em>ไม่ใช่</em></h1>
+      <p>รวมรีวิวเกมคุณภาพจากทุกแพลตฟอร์ม จัดหมวดหมู่ตามแนวที่คุณชอบ พร้อมค้นหาและกรองเกมที่ตรงใจได้ทันที</p>
+      <div class="hero-ctas">
+        <a href="search.html" class="btn-primary">เริ่มค้นหาเกม</a>
+        <a href="categories.html" class="btn-ghost">ดูหมวดหมู่ทั้งหมด</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b id="stat-games">–</b><span>เกมที่รีวิวแล้ว</span></div>
+        <div class="hero-stat"><b id="stat-picks">–</b><span>ตัวเลือกของบรรณาธิการ</span></div>
+        <div class="hero-stat"><b id="stat-cats">–</b><span>หมวดหมู่ให้เลือก</span></div>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div class="hero-stat"><b id="stat-games">–</b><span>เกมที่รีวิวแล้ว</span></div>
-      <div class="hero-stat"><b id="stat-picks">–</b><span>ตัวเลือกของบรรณาธิการ</span></div>
-      <div class="hero-stat"><b id="stat-cats">–</b><span>หมวดหมู่ให้เลือก</span></div>
+    <div class="hero-right">
+      <a class="hero-card" id="hero-card" href="#">
+        <span class="state">กำลังโหลดเกมเด่น...</span>
+      </a>
     </div>
-  </div>
-  <div class="hero-right">
-    <a class="hero-card" id="hero-card" href="#">
-      <p style="color:var(--text-mid);font-size:14px;">กำลังโหลด...</p>
-    </a>
   </div>
 </div>
 
-<div class="wrap">
-  <section>
-    <div class="sec-head"><h2>รีวิวยอดนิยม</h2><a href="search.html?sort=score_desc">ดูทั้งหมด</a></div>
+<div class="container">
+  <section class="section">
+    <div class="sec-head"><h2>รีวิวยอดนิยม</h2><a class="more" href="search.html?sort=score_desc">ดูทั้งหมด →</a></div>
     <div class="review-strip" id="review-strip">
-      <p style="color:var(--text-mid);font-size:14px;">กำลังโหลดเกม...</p>
+      <span class="state">กำลังโหลดเกม...</span>
     </div>
   </section>
 
-  <section>
+  <section class="section">
     <div class="main-grid">
       <div>
-        <div class="sec-head" id="categories"><h2>เลือกตามหมวดหมู่</h2><a href="categories.html">ดูทั้งหมด</a></div>
+        <div class="sec-head" id="categories"><h2>เลือกตามหมวดหมู่</h2><a class="more" href="categories.html">ดูทั้งหมด →</a></div>
         <div class="cat-grid" id="cat-grid">
-          <p style="color:var(--text-mid);font-size:14px;">กำลังโหลดหมวดหมู่...</p>
+          <span class="state">กำลังโหลดหมวดหมู่...</span>
         </div>
 
-        <div style="height:44px;"></div>
-
-        <div class="sec-head"><h2>เกมคะแนนสูงสุด</h2><a href="search.html?sort=score_desc">ดูทั้งหมด</a></div>
+        <div class="sec-head" style="margin-top:44px;"><h2>เกมคะแนนสูงสุด</h2><a class="more" href="search.html?sort=score_desc">ดูทั้งหมด →</a></div>
         <div class="rec-row" id="rec-row">
-          <p style="color:var(--text-mid);font-size:14px;">กำลังโหลดเกม...</p>
+          <span class="state">กำลังโหลดเกม...</span>
         </div>
       </div>
 
       <aside>
-        <div class="sec-head" style="border:none;margin-bottom:12px;"><h2 style="font-size:17px;">เกมที่เพิ่มล่าสุด</h2></div>
+        <div class="sidebar-title">เกมที่เพิ่มล่าสุด</div>
         <div id="recent-list">
-          <p style="color:var(--text-mid);font-size:14px;">กำลังโหลด...</p>
+          <span class="state">กำลังโหลด...</span>
         </div>
       </aside>
     </div>
   </section>
 </div>
 
-<footer>Game Discovery — เว็บไซต์รีวิวและแนะนำเกม, mockup ธีมเขียว-ดำ</footer>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="brand" href="index.html"><span class="brand-mark">▸</span>Game Discovery</a>
+      <p>รวมรีวิวและคัดสรรเกมคุณภาพจากทุกแพลตฟอร์ม ในที่เดียว</p>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">หน้าแรก</a>
+      <a href="categories.html">หมวดหมู่</a>
+      <a href="search.html">ค้นหา</a>
+    </div>
+  </div>
+  <p class="footer-note">Game Discovery — เว็บไซต์รีวิวและแนะนำเกม</p>
+</footer>
 
+<script src="ui.js"></script>
 <script src="common.js"></script>
 <script src="script.js"></script>
 </body>

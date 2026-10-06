@@ -1,0 +1,8 @@
+# ไฟล์ชั่วคราวระหว่างพัฒนา
+serve.log
+*.log
+.DS_Store
+Thumbs.db
+
+# dependency (ถ้าภายหลังย้ายมาใช้ bundler)
+node_modules/

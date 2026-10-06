@@ -1,5 +1,4 @@
 const API_URL = 'https://web-backend-silk.vercel.app/api/games';
-const coverColors = ['#4B2A2E', '#2E3A2A', '#2A3038', '#33231F', '#243228', '#1F2A38'];
 
 function getCategoryName() {
   const params = new URLSearchParams(window.location.search);
@@ -18,19 +17,20 @@ async function loadCategory() {
     return;
   }
 
-  titleEl.textContent = `หมวดหมู่: ${category}`;
+  titleEl.textContent = category;
+  document.title = `${category} — Game Discovery`;
+
+  renderSkeletons(resultsEl, 6, true);
 
   try {
     const res = await fetch(`${API_URL}?category=${encodeURIComponent(category)}`);
-
-    if (!res.ok) {
-      throw new Error('โหลดข้อมูลไม่สำเร็จ');
-    }
+    if (!res.ok) throw new Error('โหลดข้อมูลไม่สำเร็จ');
 
     const games = await res.json();
     renderResults(resultsEl, countEl, games);
   } catch (err) {
-    countEl.textContent = 'โหลดข้อมูลไม่สำเร็จ ตรวจสอบว่าเปิด backend ด้วย node app.js อยู่หรือไม่';
+    countEl.textContent = '';
+    renderState(resultsEl, 'โหลดข้อมูลไม่สำเร็จ — ลองรีเฟรชหน้านี้อีกครั้ง', true);
     console.error(err);
   }
 }
@@ -40,27 +40,11 @@ function renderResults(resultsEl, countEl, games) {
   resultsEl.innerHTML = '';
 
   if (games.length === 0) {
-    resultsEl.innerHTML = '<p style="color:var(--text-mid);">ยังไม่มีเกมในหมวดหมู่นี้</p>';
+    renderState(resultsEl, 'ยังไม่มีเกมในหมวดหมู่นี้');
     return;
   }
 
-  games.forEach((game, index) => {
-    const color = coverColors[(game.id - 1) % coverColors.length];
-
-    const card = document.createElement('a');
-    card.className = 'review-card';
-    card.href = `game-detail.html?id=${game.id}`;
-    card.style.display = 'block';
-    card.innerHTML = `
-      <div class="cover" style="background:${color}">${game.title}</div>
-      <h4>${game.title}</h4>
-      <div class="review-meta">
-        <span class="genre">${game.category}</span>
-        <span class="score">${game.score}</span>
-      </div>
-    `;
-    resultsEl.appendChild(card);
-  });
+  games.forEach((game) => resultsEl.appendChild(makeGameCard(game)));
 }
 
 loadCategory();

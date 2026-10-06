@@ -1,5 +1,4 @@
 const API_BASE = 'https://web-backend-silk.vercel.app/api';
-const coverColors = ['#4B2A2E', '#2E3A2A', '#2A3038', '#33231F', '#243228', '#1F2A38'];
 
 const searchInput = document.getElementById('search-input');
 const categoryFilter = document.getElementById('category-filter');
@@ -9,10 +8,6 @@ const countEl = document.getElementById('search-count');
 const resultsEl = document.getElementById('search-results');
 
 let debounceTimer = null;
-
-function coverColorFor(id) {
-  return coverColors[(id - 1) % coverColors.length];
-}
 
 function readParamsFromUrl() {
   const params = new URLSearchParams(window.location.search);
@@ -64,8 +59,8 @@ async function runSearch() {
   // อัปเดต URL bar ด้วย (ไม่ reload หน้า) เพื่อให้แชร์ลิงก์ผลการค้นหาได้
   window.history.replaceState(null, '', qs ? `search.html?${qs}` : 'search.html');
 
-  resultsEl.innerHTML = '<p class="search-state">กำลังค้นหา...</p>';
   countEl.textContent = '';
+  renderSkeletons(resultsEl, 6, true);
 
   try {
     const res = await fetch(`${API_BASE}/games?${qs}`);
@@ -75,9 +70,7 @@ async function runSearch() {
     renderResults(games);
   } catch (err) {
     countEl.textContent = '';
-    resultsEl.innerHTML = `<p class="search-state">
-      ค้นหาไม่สำเร็จ ตรวจสอบว่าเปิด backend ด้วย node app.js อยู่ที่ http://localhost:3000 หรือไม่
-    </p>`;
+    renderState(resultsEl, 'ค้นหาไม่สำเร็จ — ลองรีเฟรชหน้านี้อีกครั้ง', true);
     console.error(err);
   }
 }
@@ -85,28 +78,13 @@ async function runSearch() {
 function renderResults(games) {
   if (games.length === 0) {
     countEl.textContent = 'ไม่พบเกมที่ตรงกับเงื่อนไข';
-    resultsEl.innerHTML = '<p class="search-state">ลองเปลี่ยนคำค้นหา หมวดหมู่ หรือปิดตัวกรองบางอย่างดูนะ</p>';
+    renderState(resultsEl, 'ลองเปลี่ยนคำค้นหา หมวดหมู่ หรือปิดตัวกรองบางอย่างดูนะ');
     return;
   }
 
   countEl.textContent = `พบ ${games.length} เกม`;
   resultsEl.innerHTML = '';
-
-  games.forEach((game) => {
-    const card = document.createElement('a');
-    card.className = 'review-card';
-    card.href = `game-detail.html?id=${game.id}`;
-    card.style.display = 'block';
-    card.innerHTML = `
-      <div class="cover" style="background:${coverColorFor(game.id)}">${game.title}</div>
-      <h4>${game.title}</h4>
-      <div class="review-meta">
-        <span class="genre">${game.category}</span>
-        <span class="score">${game.score}</span>
-      </div>
-    `;
-    resultsEl.appendChild(card);
-  });
+  games.forEach((game) => resultsEl.appendChild(makeGameCard(game)));
 }
 
 function debouncedSearch() {
